@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ปฏิทินการจัดกิจกรรม Mice จังหวัดพิษณุโลก พ.ศ.2570</title>
+    
+    <!-- Google Fonts: Prompt (สำหรับหัวเรื่อง) & Sarabun (สำหรับเนื้อหา) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@400;600;700;800;900&family=Sarabun:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Bootstrap Icons สำหรับไอคอนตกแต่ง -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+    <!-- Tailwind CSS (CDN) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        prompt: ['Prompt', 'sans-serif'],
+                        sarabun: ['Sarabun', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            dark: '#190B35',
+                            purple: '#351064',
+                            violet: '#6B35A8',
+                            gold: '#E6BD70',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* -------------------------------------------
+           CUSTOM CSS EFFECTS (คงของเดิมไว้ทั้งหมด)
+        ------------------------------------------- */
+        .text-stroke-main {
+            -webkit-text-stroke: 2px #fff;
+            text-shadow: 0px 4px 15px rgba(0, 0, 0, 0.8), 2px 2px 0px #6B35A8;
+            color: #ff5e00; 
+        }
+        
+        .text-stroke-sub {
+            text-shadow: 2px 2px 0px #E6BD70, 0px 5px 15px rgba(0, 0, 0, 0.9);
+        }
+
+        /* -------------------------------------------
+           FIREWORKS ANIMATION (แอฟเฟกต์พลุแบบเดิม)
+        ------------------------------------------- */
+        @keyframes firework {
+            0% { transform: translate(var(--x), var(--initialY)); width: var(--initialSize); opacity: 1; }
+            50% { width: 0.5vmin; opacity: 1; }
+            100% { width: var(--finalSize); opacity: 0; }
+        }
+        
+        .firework, .firework::before, .firework::after {
+            --initialSize: 0.5vmin;
+            --finalSize: 50vmin;
+            --particleSize: 0.3vmin;
+            --color1: yellow;
+            --color2: khaki;
+            --color3: white;
+            --color4: lime;
+            --color5: gold;
+            --color6: mediumseagreen;
+            --y: -30vmin;
+            --x: -50%;
+            --initialY: 60vmin;
+            content: "";
+            animation: firework 2.5s infinite;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, var(--y));
+            width: var(--initialSize);
+            aspect-ratio: 1;
+            background: 
+                radial-gradient(circle, var(--color1) var(--particleSize), #0000 0) 50% 0%,
+                radial-gradient(circle, var(--color2) var(--particleSize), #0000 0) 100% 50%,
+                radial-gradient(circle, var(--color3) var(--particleSize), #0000 0) 50% 100%,
+                radial-gradient(circle, var(--color4) var(--particleSize), #0000 0) 0% 50%,
+                radial-gradient(circle, var(--color5) var(--particleSize), #0000 0) 80% 90%,
+                radial-gradient(circle, var(--color6) var(--particleSize), #0000 0) 20% 90%,
+                radial-gradient(circle, var(--color1) var(--particleSize), #0000 0) 20% 10%,
+                radial-gradient(circle, var(--color2) var(--particleSize), #0000 0) 80% 10%;
+            background-size: var(--initialSize) var(--initialSize);
+            background-repeat: no-repeat;
+        }
+        
+        .firework::before { --x: -50%; --y: -50%; --initialY: -50%; transform: translate(-50%, -50%) rotate(40deg) scale(1.3) rotateY(40deg); }
+        .firework::after { --x: -50%; --y: -50%; --initialY: -50%; transform: translate(-50%, -50%) rotate(170deg) scale(1.15) rotateY(-30deg); }
+        
+        .firework:nth-child(2) { --x: 30vmin; --y: -15vmin; --color1: pink; --color2: violet; --color3: fuchsia; --color4: orchid; --color5: plum; --color6: lavender; animation-delay: -0.4s; }
+        .firework:nth-child(3) { --x: -30vmin; --y: -25vmin; --color1: cyan; --color2: lightcyan; --color3: lightblue; --color4: PaleTurquoise; --color5: SkyBlue; --color6: lavender; animation-delay: -1.5s; }
+        .firework:nth-child(4) { --x: 40vmin; --y: -5vmin; --color1: #E6BD70; --color2: #ffffff; --color3: #ff5e00; animation-delay: -0.8s; }
+
+        /* Animation ค่อยๆ โผล่สำหรับการ์ด */
+        .fade-in-up {
+            animation: fadeInUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        @keyframes fadeInUp {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ซ่อน Scrollbar ของแถบเดือนในมือถือแต่ยังเลื่อนได้ */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="font-sarabun bg-brand-dark min-h-screen relative overflow-x-hidden flex flex-col">
+
+    <!-- 1. BACKGROUND IMAGE (Parallax) & FIREWORKS LAYER -->
+    <div class="fixed inset-0 z-[-2]">
+        <img src="2.png" 
+             onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Wat_Phra_Si_Rattana_Mahathat_Woramahawihan.jpg/1920px-Wat_Phra_Si_Rattana_Mahathat_Woramahawihan.jpg'"
+             alt="Background" 
+             class="w-full h-full object-cover opacity-60">
+        <div class="absolute inset-0 bg-gradient-to-b from-brand-dark/70 via-brand-purple/50 to-brand-dark"></div>
+    </div>
+    
+    <!-- แอฟเฟกต์พลุ (CSS) -->
+    <div class="fixed inset-0 z-[-1] pointer-events-none opacity-90">
+        <div class="firework"></div>
+        <div class="firework"></div>
+        <div class="firework"></div>
+        <div class="firework hidden md:block"></div>
+    </div>
+
+    <!-- 2. LOGO มุมขวาบน -->
+    <div class="absolute top-4 right-4 md:top-6 md:right-8 z-20 flex items-center gap-2 bg-white/10 backdrop-blur-md px-3 py-2 rounded-full border border-white/20 shadow-[0_0_15px_rgba(0,0,0,0.5)] transition hover:bg-white/20">
+        <img src="1.png" 
+             onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/Seal_Phitsanulok.png/240px-Seal_Phitsanulok.png'"
+             alt="โลโก้จังหวัด" 
+             class="w-8 h-8 md:w-11 md:h-11 object-contain drop-shadow-md bg-white rounded-full p-1">
+        <div class="text-white font-prompt leading-tight text-left mr-1">
+            <div class="font-bold text-[0.7rem] md:text-sm">สำนักงานจังหวัดพิษณุโลก</div>
+            <div class="text-[0.55rem] md:text-[0.65rem] text-brand-gold tracking-wider">PHITSANULOK PROVINCIAL OFFICE</div>
+        </div>
+    </div>
+
+    <!-- 3. HEADER BANNERS -->
+    <header class="pt-28 pb-8 px-4 text-center relative z-10 w-full max-w-5xl mx-auto flex flex-col items-center">
+        <div class="bg-red-600 text-white font-prompt font-bold text-sm md:text-lg px-6 py-1.5 rounded-full mb-4 shadow-[0_0_15px_rgba(220,38,38,0.8)] border-2 border-white transform -rotate-2">
+            ขับเคลื่อนเศรษฐกิจเมืองสองแคว!
+        </div>
+        
+        <h1 class="font-prompt font-black text-4xl md:text-6xl text-white text-stroke-sub leading-tight mb-2">
+            ปฏิทินการจัดกิจกรรม MICE
+        </h1>
+        <h2 class="font-prompt font-black text-5xl md:text-8xl text-stroke-main tracking-tighter transform rotate-1 mb-6 mt-2">
+            จังหวัดพิษณุโลก พ.ศ.2570
+        </h2>
+        
+        <div class="bg-gradient-to-r from-orange-500 to-amber-500 text-white font-prompt font-bold text-base md:text-xl px-8 py-2.5 rounded-md shadow-lg border border-white/50 inline-block">
+            รวมงานประชุม นิทรรศการ และกำหนดการสำคัญของจังหวัด
+        </div>
+    </header>
+
+    <!-- 4. MONTH SELECTOR (เลือกเดือน มกราคม - ธันวาคม 2570) -->
+    <section class="max-w-6xl mx-auto px-4 mb-8 relative z-10 w-full">
+        <div class="bg-white/10 backdrop-blur-md p-3 md:p-4 rounded-2xl border border-white/20 shadow-[0_10px_30px_rgba(0,0,0,0.4)]">
+            <div class="flex items-center justify-between mb-3 px-2">
+                <span class="font-prompt font-bold text-brand-gold text-sm md:text-base flex items-center gap-2">
+                    <i class="bi bi-calendar3"></i> เลือกเดือนที่ต้องการดูปฏิทิน (พ.ศ. 2570)
+                </span>
+                <span id="event-count-badge" class="bg-brand-purple text-white text-xs font-prompt px-3 py-1 rounded-full border border-brand-gold/50">
+                    0 กิจกรรม
+                </span>
+            </div>
+            
+            <!-- ปุ่มเลือก 12 เดือน -->
+            <div id="month-selector" class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-12 gap-2">
+                <!-- ปุ่มเดือนจะถูกสร้างด้วย JS -->
+            </div>
+        </div>
+
+        <!-- หัวข้อเดือนที่กำลังแสดงอยู่ + ปุ่มเลื่อนซ้ายขวา -->
+        <div class="flex items-center justify-center gap-4 mt-8 mb-2">
+            <button onclick="prevMonth()" class="w-10 h-10 rounded-full bg-white/10 hover:bg-brand-gold hover:text-brand-dark text-white border border-white/30 flex items-center justify-center transition shadow-md" title="เดือนก่อนหน้า">
+                <i class="bi bi-chevron-left text-lg"></i>
+            </button>
+            <h3 id="current-month-title" class="font-prompt font-extrabold text-2xl md:text-4xl text-white drop-shadow-[0_2px_10px_rgba(230,189,112,0.6)] min-w-[220px] md:min-w-[300px] text-center">
+                มกราคม 2570
+            </h3>
+            <button onclick="nextMonth()" class="w-10 h-10 rounded-full bg-white/10 hover:bg-brand-gold hover:text-brand-dark text-white border border-white/30 flex items-center justify-center transition shadow-md" title="เดือนถัดไป">
+                <i class="bi bi-chevron-right text-lg"></i>
+            </button>
+        </div>
+    </section>
+
+    <!-- 5. EVENT CALENDAR GRID -->
+    <main class="max-w-6xl mx-auto px-4 pb-20 relative z-10 w-full flex-grow">
+        <div id="event-grid" class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+            <!-- Event Cards จะถูกสร้างด้วย JavaScript -->
+        </div>
+    </main>
+
+    <!-- 6. FOOTER -->
+    <footer class="text-center pb-8 pt-4 relative z-10 text-white/60 font-sarabun text-sm bg-black/30 backdrop-blur-sm mt-auto border-t border-white/10">
+        <div class="pt-4">
+            <p>ปฏิทินการจัดกิจกรรม MICE จังหวัดพิษณุโลก © 2570 สงวนลิขสิทธิ์</p>
+            <p class="mt-1 text-xs opacity-70"><i class="bi bi-info-circle"></i> ข้อมูลจำลองเพื่อการนำเสนอ ยังไม่ใช่กำหนดการจริง</p>
+        </div>
+    </footer>
+
+    <!-- 7. TAILWIND MODAL สำหรับแสดงรายละเอียดกิจกรรม -->
+    <div id="eventModal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4">
+        <!-- Backdrop -->
+        <div class="absolute inset-0 bg-brand-dark/80 backdrop-blur-sm" onclick="closeModal()"></div>
+        
+        <!-- Modal Content -->
+        <div class="relative bg-white rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.7)] w-full max-w-lg overflow-hidden transform scale-95 transition-all duration-300 opacity-0" id="modalContent">
+            <!-- Modal Header -->
+            <div class="bg-gradient-to-r from-purple-700 to-fuchsia-600 p-5 flex justify-between items-start text-white border-b-4 border-brand-gold">
+                <div class="flex items-center gap-3 pr-4">
+                    <img id="m-badge-img" src="" alt="" class="w-10 h-10 object-contain bg-white/20 rounded-lg p-1 shrink-0">
+                    <h4 class="font-prompt font-bold text-lg md:text-xl leading-tight drop-shadow-md" id="m-title">ชื่อกิจกรรม</h4>
+                </div>
+                <button onclick="closeModal()" class="text-white hover:text-red-200 bg-black/20 hover:bg-black/40 rounded-full w-8 h-8 flex shrink-0 items-center justify-center transition focus:outline-none">
+                    <i class="bi bi-x-lg"></i>
+                </button>
+            </div>
+            
+            <!-- Modal Body -->
+            <div class="p-6 font-sarabun text-gray-800 space-y-4 bg-gray-50">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="flex items-start gap-3">
+                        <div class="w-10 h-10 rounded-full bg-orange-100 text-orange-600 flex items-center justify-center shrink-0 text-xl"><i class="bi bi-calendar2-check"></i></div>
+                        <div>
+                            <div class="text-xs text-gray-500 font-bold uppercase tracking-wide">วันที่</div>
+                            <div id="m-date" class="font-semibold text-gray-900 leading-tight mt-0.5"></div>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <div class="w-10 h-10 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center shrink-0 text-xl"><i class="bi bi-clock"></i></div>
+                        <div>
+                            <div class="text-xs text-gray-500 font-bold uppercase tracking-wide">เวลา</div>
+                            <div id="m-time" class="font-semibold text-gray-900 leading-tight mt-0.5"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex items-start gap-3 pt-1">
+                    <div class="w-10 h-10 rounded-full bg-red-100 text-red-600 flex items-center justify-center shrink-0 text-xl"><i class="bi bi-geo-alt"></i></div>
+                    <div>
+                        <div class="text-xs text-gray-500 font-bold uppercase tracking-wide">สถานที่จัดงาน</div>
+                        <div id="m-location" class="font-semibold text-gray-900 leading-tight mt-0.5"></div>
+                    </div>
+                </div>
+                
+                <div class="flex items-start gap-3">
+                    <div class="w-10 h-10 rounded-full bg-purple-100 text-purple-600 flex items-center justify-center shrink-0 text-xl"><i class="bi bi-building"></i></div>
+                    <div>
+                        <div class="text-xs text-gray-500 font-bold uppercase tracking-wide">ประเภทงาน MICE</div>
+                        <div id="m-department" class="font-semibold text-gray-900 leading-tight mt-0.5"></div>
+                    </div>
+                </div>
+
+                <hr class="border-gray-200 my-2">
+                
+                <div class="bg-white p-4 rounded-xl border border-gray-100 shadow-inner">
+                    <div class="text-xs text-brand-purple font-bold uppercase tracking-wide mb-1"><i class="bi bi-info-square mr-1"></i> รายละเอียดเพิ่มเติม</div>
+                    <div class="text-sm md:text-base text-gray-700 leading-relaxed" id="m-desc"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript สำหรับ Logic & Render ข้อมูล 12 เดือน -->
+    <script>
+        // รายชื่อเดือนทั้ง 12 เดือน
+        const monthsList = [
+            { num: 1, short: 'ม.ค.', full: 'มกราคม' },
+            { num: 2, short: 'ก.พ.', full: 'กุมภาพันธ์' },
+            { num: 3, short: 'มี.ค.', full: 'มีนาคม' },
+            { num: 4, short: 'เม.ย.', full: 'เมษายน' },
+            { num: 5, short: 'พ.ค.', full: 'พฤษภาคม' },
+            { num: 6, short: 'มิ.ย.', full: 'มิถุนายน' },
+            { num: 7, short: 'ก.ค.', full: 'กรกฎาคม' },
+            { num: 8, short: 'ส.ค.', full: 'สิงหาคม' },
+            { num: 9, short: 'ก.ย.', full: 'กันยายน' },
+            { num: 10, short: 'ต.ค.', full: 'ตุลาคม' },
+            { num: 11, short: 'พ.ย.', full: 'พฤศจิกายน' },
+            { num: 12, short: 'ธ.ค.', full: 'ธันวาคม' }
+        ];
+
+        // รูปภาพตกแต่งมุมขวาบนแยกตามหมวดหมู่ (สติกเกอร์ 3D สวยงาม ของใครของมัน)
+        const categoryBadges = {
+            meeting: 'https://cdn-icons-png.flaticon.com/512/3281/3281289.png',    // กระเป๋า/ประชุม
+            expo: 'https://cdn-icons-png.flaticon.com/512/3081/3081559.png',       // ร้านค้า/นิทรรศการ
+            incentive: 'https://cdn-icons-png.flaticon.com/512/201/201623.png',    // ท่องเที่ยว/เดินทาง
+            convention: 'https://cdn-icons-png.flaticon.com/512/2997/2997322.png', // สัมมนา/วิชาการ
+            culture: 'https://cdn-icons-png.flaticon.com/512/3655/3655585.png',    // วัฒนธรรม/อาหาร
+            tech: 'https://cdn-icons-png.flaticon.com/512/4257/4257483.png',       // เทคโนโลยี/StartUp
+            sport: 'https://cdn-icons-png.flaticon.com/512/857/857455.png',        // กีฬา/วิ่ง
+            festival: 'https://cdn-icons-png.flaticon.com/512/3132/3132693.png'    // เทศกาล/เฉลิมฉลอง
+        };
+
+        // ข้อมูลจำลองกิจกรรม MICE ครบทั้ง 12 เดือน พ.ศ. 2570 (เดือนละ 6-8 วัน)
+        const eventsData = [
+            // --- เดือน 1: มกราคม 2570 (7 วัน) ---
+            { id: 101, month: 1, dateNum: '05', monthTh: 'ม.ค.', fullDate: '5 มกราคม 2570', title: 'ประชุมวางแผนยุทธศาสตร์ Phitsanulok MICE 2570', time: '09:00 - 12:00 น.', location: 'ศาลากลางจังหวัดพิษณุโลก', department: 'ประชุม (Meeting)', category: 'การประชุม', icon: 'bi-people', badgeImg: categoryBadges.meeting, desc: 'ประชุมคณะกรรมการขับเคลื่อนเมืองไมซ์จังหวัดพิษณุโลก ประจำปี 2570' },
+            { id: 102, month: 1, dateNum: '10', monthTh: 'ม.ค.', fullDate: '10 มกราคม 2570', title: 'Phitsanulok Kids & Edu Expo 2027', time: '09:00 - 18:00 น.', location: 'เซ็นทรัล พิษณุโลก', department: 'นิทรรศการ (Exhibition)', category: 'นิทรรศการ', icon: 'bi-display', badgeImg: categoryBadges.expo, desc: 'มหกรรมแสดงนวัตกรรมการศึกษาและสื่อการเรียนรู้สำหรับเยาวชน' },
+            { id: 103, month: 1, dateNum: '14', monthTh: 'ม.ค.', fullDate: '14 มกราคม 2570', title: 'สัมมนายกระดับมาตรฐานโรงแรมและสถานที่จัดงาน', time: '13:00 - 16:30 น.', location: 'โรงแรมท็อปแลนด์ คอนเวนชั่น', department: 'สัมมนา (Seminar)', category: 'สัมมนา', icon: 'bi-mic', badgeImg: categoryBadges.convention, desc: 'อบรมเชิงปฏิบัติการมาตรฐานสถานที่จัดงานประเทศไทย (TMVS)' },
+            { id: 104, month: 1, dateNum: '18', monthTh: 'ม.ค.', fullDate: '18 มกราคม 2570', title: 'งานรัฐพิธีและนิทรรศการเทิดพระเกียรติสมเด็จพระนเรศวรฯ', time: '08:00 - 20:00 น.', location: 'พระราชวังจันทน์', department: 'อีเวนต์พิเศษ (Special Event)', category: 'วัฒนธรรม', icon: 'bi-brightness-high', badgeImg: categoryBadges.culture, desc: 'นิทรรศการประวัติศาสตร์และการแสดงแสงสีเสียงยิ่งใหญ่' },
+            { id: 105, month: 1, dateNum: '22', monthTh: 'ม.ค.', fullDate: '22 มกราคม 2570', title: 'Corporate Incentive Camp ภูหินร่องกล้า', time: '08:30 - 17:00 น.', location: 'อุทยานแห่งชาติภูหินร่องกล้า', department: 'อินเซนทิฟ (Incentive)', category: 'ท่องเที่ยว', icon: 'bi-compass', badgeImg: categoryBadges.incentive, desc: 'กิจกรรมต้อนรับคณะผู้บริหารและสัมมนาท่ามกลางธรรมชาติและดอกซากุระเมืองไทย' },
+            { id: 106, month: 1, dateNum: '26', monthTh: 'ม.ค.', fullDate: '26 มกราคม 2570', title: 'เวทีเจรจาธุรกิจเกษตรแปรรูปภาคเหนือ', time: '10:00 - 16:00 น.', location: 'โรงแรมเรือนแพ รอยัล ปาร์ค', department: 'ประชุม (Meeting)', category: 'ธุรกิจ', icon: 'bi-briefcase', badgeImg: categoryBadges.meeting, desc: 'Business Matching เชื่อมโยงผู้ผลิตสินค้าเกษตรกับผู้ส่งออก' },
+            { id: 107, month: 1, dateNum: '30', monthTh: 'ม.ค.', fullDate: '30 มกราคม 2570', title: 'Phitsanulok Night Run & Music Fest', time: '17:00 - 23:00 น.', location: 'สวนชมน่านเฉลิมพระเกียรติ', department: 'อีเวนต์พิเศษ (Special Event)', category: 'กีฬา/ดนตรี', icon: 'bi-music-note', badgeImg: categoryBadges.sport, desc: 'กิจกรรมวิ่งชมเมืองยามค่ำคืนพร้อมเทศกาลดนตรีริมแม่น้ำน่าน' },
+
+            // --- เดือน 2: กุมภาพันธ์ 2570 (6 วัน) ---
+            { id: 201, month: 2, dateNum: '04', monthTh: 'ก.พ.', fullDate: '4 กุมภาพันธ์ 2570', title: 'ประชุมหอการค้าและสภาอุตสาหกรรมภาคเหนือ', time: '09:00 - 15:00 น.', location: 'โรงแรมอมรินทร์ลากูน', department: 'ประชุม (Meeting)', category: 'การประชุม', icon: 'bi-people', badgeImg: categoryBadges.meeting, desc: 'หารือแนวทางกระตุ้นเศรษฐกิจและการลงทุนพื้นที่ภาคเหนือตอนล่าง' },
+            { id: 202, month: 2, dateNum: '09', monthTh: 'ก.พ.', fullDate: '9 กุมภาพันธ์ 2570', title: 'มหกรรมสินค้าอินทรีย์และอาหารปลอดภัย', time: '10:00 - 20:00 น.', location: 'ลานหน้าศาลากลางจังหวัด', department: 'นิทรรศการ (Exhibition)', category: 'นิทรรศการ', icon: 'bi-shop', badgeImg: categoryBadges.expo, desc: 'ออกร้านจำหน่ายสินค้าเกษตรอินทรีย์และนวัตกรรมอาหารสุขภาพ' },
+            { id: 203, month: 2, dateNum: '14', monthTh: 'ก.พ.', fullDate: '14 กุมภาพันธ์ 2570', title: 'Phitsanulok Love & Art Festival 2027', time: '16:00 - 22:00 น.', location: 'สะพานนเรศวร - ริมแม่น้ำน่าน', department: 'อีเวนต์พิเศษ (Special Event)', category: 'เทศกาล', icon: 'bi-heart', badgeImg: categoryBadges.festival, desc: 'เทศกาลศิลปะ แสงไฟ และดนตรีในบรรยากาศสุดโรแมนติก' },
+            { id: 204, month: 2, dateNum: '19', monthTh: 'ก.พ.', fullDate: '19 กุมภาพันธ์ 2570', title: 'สัมมนาเทคโนโลยี AI สำหรับธุรกิจ SME', time: '09:00 - 16:00 น.', location: 'อุทยานวิทยาศาสตร์ภาคเหนือตอนล่าง', department: 'สัมมนา (Seminar)', category: 'เทคโนโลยี', icon: 'bi-laptop', badgeImg: categoryBadges.tech, desc: 'อบรมการประยุกต์ใช้ปัญญาประดิษฐ์เพื่อเพิ่มประสิทธิภาพธุรกิจ' },
+            { id: 205, month: 2, dateNum: '23', monthTh: 'ก.พ.', fullDate: '23 กุมภาพันธ์ 2570', title: 'การประชุมวิชาการเครือข่ายวิจัยระดับชาติ', time: '08:30 - 17:00 น.', location: 'มหาวิทยาลัยนเรศวร', department: 'ประชุมวิชาการ (Convention)', category: 'วิชาการ', icon: 'bi-journal-text', badgeImg: categoryBadges.convention, desc: 'นำเสนอผลงานวิจัยและนวัตกรรมจากสถาบันอุดมศึกษาทั่วประเทศ' },
+            { id: 206, month: 2, dateNum: '27', monthTh: 'ก.พ.', fullDate: '27 กุมภาพันธ์ 2570', title: 'ทริปศึกษาดูงานเส้นทางประวัติศาสตร์สองแคว', time: '08:00 - 16:00 น.', location: 'วัดพระศรีรัตนมหาธาตุฯ - วัดราชบูรณะ', department: 'อินเซนทิฟ (Incentive)', category: 'ท่องเที่ยว', icon: 'bi-compass', badgeImg: categoryBadges.incentive, desc: 'โปรแกรมท่องเที่ยวเชิงวัฒนธรรมสำหรับคณะผู้เข้าร่วมประชุม' },
+
+            // --- เดือน 3: มีนาคม 2570 (7 วัน) ---
+            { id: 301, month: 3, dateNum: '04', monthTh: 'มี.ค.', fullDate: '4 มีนาคม 2570', title: 'การประชุมสัมมนา MICE City ภาคเหนือตอนล่าง', time: '09:00 - 16:00 น.', location: 'ศูนย์แสดงสินค้าและประชุมนานาชาติพิษณุโลก', department: 'ประชุม (Meeting)', category: 'การประชุม', icon: 'bi-people', badgeImg: categoryBadges.meeting, desc: 'เตรียมความพร้อมผู้ประกอบการท้องถิ่นในการรองรับอุตสาหกรรมไมซ์' },
+            { id: 302, month: 3, dateNum: '08', monthTh: 'มี.ค.', fullDate: '8 มีนาคม 2570', title: 'เวทีเสวนาพลังสตรีนักธุรกิจภาคเหนือ', time: '13:00 - 17:00 น.', location: 'โรงแรมภัทธารา รีสอร์ท แอนด์ สปา', department: 'สัมมนา (Seminar)', category: 'ธุรกิจ', icon: 'bi-award', badgeImg: categoryBadges.convention, desc: 'แลกเปลี่ยนวิสัยทัศน์ผู้บริหารหญิงเนื่องในวันสตรีสากล' },
+            { id: 303, month: 3, dateNum: '12', monthTh: 'มี.ค.', fullDate: '12 มีนาคม 2570', title: 'มหกรรมยานยนต์และพลังงานสะอาด พิษณุโลก', time: '10:00 - 21:00 น.', location: 'เซ็นทรัล พิษณุโลก', department: 'นิทรรศการ (Exhibition)', category: 'นิทรรศการ', icon: 'bi-ev-front', badgeImg: categoryBadges.tech, desc: 'จัดแสดงรถยนต์ไฟฟ้าและนวัตกรรมพลังงานทดแทน' },
+            { id: 304, month: 3, dateNum: '16', monthTh: 'มี.ค.', fullDate: '16 มีนาคม 2570', title: 'การประชุมคณะกรรมการร่วมภาครัฐและเอกชน (กรอ.)', time: '09:30 - 12:00 น.', location: 'ศาลากลางจังหวัดพิษณุโลก', department: 'ประชุม (Meeting)', category: 'การประชุม', icon: 'bi-building', badgeImg: categoryBadges.meeting, desc: 'ติดตามความคืบหน้าโครงการโครงสร้างพื้นฐานและโลจิสติกส์' },
+            { id: 305, month: 3, dateNum: '20', monthTh: 'มี.ค.', fullDate: '20 มีนาคม 2570', title: 'Phitsanulok Craft & Coffee Festival', time: '10:00 - 20:00 น.', location: 'ศูนย์วัฒนธรรมภาคเหนือตอนล่าง', department: 'งานแสดงสินค้า (Exhibition)', category: 'งานแฟร์', icon: 'bi-cup-hot', badgeImg: categoryBadges.expo, desc: 'รวมร้านกาแฟพิเศษและงานคราฟต์ท้องถิ่นกว่า 60 บูธ' },
+            { id: 306, month: 3, dateNum: '25', monthTh: 'มี.ค.', fullDate: '25 มีนาคม 2570', title: 'กิจกรรมล่องแก่งสร้างทีม (Executive Rafting)', time: '08:00 - 15:00 น.', location: 'ลำน้ำเข็ก อำเภอวังทอง', department: 'อินเซนทิฟ (Incentive)', category: 'ท่องเที่ยว', icon: 'bi-water', badgeImg: categoryBadges.incentive, desc: 'กิจกรรมผจญภัยเชิงนิเวศสำหรับกลุ่มองค์กรและบริษัทชั้นนำ' },
+            { id: 307, month: 3, dateNum: '29', monthTh: 'มี.ค.', fullDate: '29 มีนาคม 2570', title: 'คอนเสิร์ตการกุศลและมหกรรมอาหารพื้นถิ่น', time: '17:00 - 23:00 น.', location: 'สนามกีฬากลางจังหวัดพิษณุโลก', department: 'อีเวนต์พิเศษ (Special Event)', category: 'บันเทิง', icon: 'bi-music-note-beamed', badgeImg: categoryBadges.festival, desc: 'ส่งเสริมการท่องเที่ยวและกระตุ้นเศรษฐกิจช่วงปิดภาคเรียน' },
+
+            // --- เดือน 4: เมษายน 2570 (6 วัน) ---
+            { id: 401, month: 4, dateNum: '03', monthTh: 'เม.ย.', fullDate: '3 เมษายน 2570', title: 'ประชุมเตรียมความพร้อมเทศกาลสงกรานต์ปลอดภัย', time: '09:00 - 12:00 น.', location: 'ศาลากลางจังหวัดพิษณุโลก', department: 'ประชุม (Meeting)', category: 'การประชุม', icon: 'bi-shield-check', badgeImg: categoryBadges.meeting, desc: 'บูรณาการหน่วยงานดูแลนักท่องเที่ยวช่วงเทศกาลสงกรานต์' },
+            { id: 402, month: 4, dateNum: '08', monthTh: 'เม.ย.', fullDate: '8 เมษายน 2570', title: 'นิทรรศการผ้าทอไทย-ยวน และของดีเมืองสองแคว', time: '10:00 - 19:00 น.', location: 'หอศิลปวัฒนธรรม ม.ราชภัฏพิบูลสงคราม', department: 'นิทรรศการ (Exhibition)', category: 'วัฒนธรรม', icon: 'bi-palette', badgeImg: categoryBadges.culture, desc: 'สืบสานภูมิปัญญาผ้าทอพื้นเมืองและหัตถกรรมท้องถิ่น' },
+            { id: 403, month: 4, dateNum: '13', monthTh: 'เม.ย.', fullDate: '13 เมษายน 2570', title: 'มหาสงกรานต์สองแคว ถนนกล้วยตาก', time: '10:00 - 22:00 น.', location: 'ถนนเอกาทศรถ - สวนชมน่าน', department: 'อีเวนต์พิเศษ (Special Event)', category: 'เทศกาล', icon: 'bi-droplet', badgeImg: categoryBadges.festival, desc: 'ขบวนแห่พระพุทธชินราชจำลอง รดน้ำดำหัว และเล่นน้ำสงกรานต์วิถีไทย' },
+            { id: 404, month: 4, dateNum: '19', monthTh: 'เม.ย.', fullDate: '19 เมษายน 2570', title: 'สัมมนาการบริหารจัดการน้ำและสิ่งแวดล้อม', time: '09:00 - 16:00 น.', location: 'โรงแรมท็อปแลนด์ คอนเวนชั่น', department: 'สัมมนา (Seminar)', category: 'สิ่งแวดล้อม', icon: 'bi-tree', badgeImg: categoryBadges.convention, desc: 'ประชุมวิชาการรับมือการเปลี่ยนแปลงสภาพภูมิอากาศ' },
+            { id: 405, month: 4, dateNum: '24', monthTh: 'เม.ย.', fullDate: '24 เมษายน 2570', title: 'Phitsanulok Halal & Gastronomy Expo', time: '11:00 - 21:00 น.', location: 'ศูนย์การค้าเซ็นทรัล พิษณุโลก', department: 'งานแสดงสินค้า (Exhibition)', category: 'อาหาร', icon: 'bi-shop', badgeImg: categoryBadges.expo, desc: 'มหกรรมอาหารฮาลาลและอาหารขึ้นชื่อระดับภูมิภาค' },
+            { id: 406, month: 4, dateNum: '28', monthTh: 'เม.ย.', fullDate: '28 เมษายน 2570', title: 'กิจกรรมต้อนรับคณะตัวแทนบริษัทนำเที่ยว (FAM Trip)', time: '08:30 - 17:00 น.', location: 'อำเภอเนินมะปราง - บ้านมุง', department: 'อินเซนทิฟ (Incentive)', category: 'ท่องเที่ยว', icon: 'bi-camera', badgeImg: categoryBadges.incentive, desc: 'นำเสนอเส้นทางท่องเที่ยวภูเขาหินปูนและโฮมสเตย์ชุมชน' },
+
+            // --- เดือน 5: พฤษภาคม 2570 (7 วัน) ---
+            { id: 501, month: 5, dateNum: '05', monthTh: 'พ.ค.', fullDate: '5 พฤษภาคม 2570', title: 'การประชุมสมาคมโรงแรมไทยภาคเหนือ', time: '09:30 - 15:00 น.', location: 'โรงแรมเรือนแพ รอยัล ปาร์ค', department: 'ประชุม (Meeting)', category: 'การประชุม', icon: 'bi-building', badgeImg: categoryBadges.meeting, desc: 'วางแผนการตลาดร่วมกันเพื่อดึงดูดกลุ่มประชุมสัมมนา' },
+            { id: 502, month: 5, dateNum: '10', monthTh: 'พ.ค.', fullDate: '10 พฤษภาคม 2570', title: 'งานสัปดาห์ส่งเสริมพระพุทธศาสนา วันวิสาขบูชา', time: '07:00 - 21:00 น.', location: 'วัดพระศรีรัตนมหาธาตุวรมหาวิหาร', department: 'อีเวนต์พิเศษ (Special Event)', category: 'วัฒนธรรม', icon: 'bi-brightness-high', badgeImg: categoryBadges.culture, desc: 'พิธีเวียนเทียนและนิทรรศการทางพระพุทธศาสนา' },
+            { id: 503, month: 5, dateNum: '15', monthTh: 'พ.ค.', fullDate: '15 พฤษภาคม 2570', title: 'งานแสดงสินค้านวัตกรรมเกษตร (Agri-Tech Expo)', time: '10:00 - 20:00 น.', location: 'อุทยานวิทยาศาสตร์ภาคเหนือตอนล่าง', department: 'นิทรรศการ (Exhibition)', category: 'นิทรรศการ', icon: 'bi-display', badgeImg: categoryBadges.tech, desc: 'จัดแสดงเทคโนโลยีการเกษตรสมัยใหม่และการจับคู่ธุรกิจ' },
+            { id: 504, month: 5, dateNum: '19', monthTh: 'พ.ค.', fullDate: '19 พฤษภาคม 2570', title: 'การประชุมวิชาการสาธารณสุขเขตสุขภาพที่ 2', time: '08:30 - 16:30 น.', location: 'โรงแรมอมรินทร์ลากูน', department: 'ประชุมวิชาการ (Convention)', category: 'วิชาการ', icon: 'bi-heart-pulse', badgeImg: categoryBadges.convention, desc: 'แลกเปลี่ยนนวัตกรรมทางการแพทย์และการดูแลสุขภาพชุมชน' },
+            { id: 505, month: 5, dateNum: '23', monthTh: 'พ.ค.', fullDate: '23 พฤษภาคม 2570', title: 'Phitsanulok Franchise & SME Fair 2027', time: '10:00 - 20:00 น.', location: 'เซ็นทรัล พิษณุโลก', department: 'งานแสดงสินค้า (Exhibition)', category: 'ธุรกิจ', icon: 'bi-briefcase', badgeImg: categoryBadges.expo, desc: 'มหกรรมชี้ช่องรวย แฟรนไชส์ และสินเชื่อเพื่อผู้ประกอบการ' },
+            { id: 506, month: 5, dateNum: '27', monthTh: 'พ.ค.', fullDate: '27 พฤษภาคม 2570', title: 'สัมมนาการออกแบบบรรจุภัณฑ์สู่ตลาดส่งออก', time: '09:00 - 16:00 น.', location: 'มหาวิทยาลัยราชภัฏพิบูลสงคราม', department: 'สัมมนา (Seminar)', category: 'อบรม', icon: 'bi-box-seam', badgeImg: categoryBadges.convention, desc: 'ยกระดับดีไซน์สินค้าชุมชนให้ตอบโจทย์ผู้บริโภคยุคใหม่' },
+            { id: 507, month: 5, dateNum: '30', monthTh: 'พ.ค.', fullDate: '30 พฤษภาคม 2570', title: 'กิจกรรมปั่นจักรยานเชิงท่องเที่ยวชมเมืองเก่า', time: '06:00 - 11:00 น.', location: 'พระราชวังจันทน์ - รอบเมือง', department: 'อินเซนทิฟ (Incentive)', category: 'กีฬา', icon: 'bi-bicycle', badgeImg: categoryBadges.sport, desc: 'กิจกรรมส่งเสริมสุขภาพและการท่องเที่ยวคาร์บอนต่ำ' },
+
+            // --- เดือน 6: มิถุนายน 2570 (6 วัน) ---
+            { id: 601, month: 6, dateNum: '03', monthTh: 'มิ.ย.', fullDate: '3 มิถุนายน 2570', title: 'กิจกรรมจิตอาสาและนิทรรศการเฉลิมพระเกียรติ', time: '08:00 - 16:00 น.', location: 'หอประชุมศรีวชิรโชติ', department: 'อีเวนต์พิเศษ (Special Event)', category: 'รัฐพิธี', icon: 'bi-award', badgeImg: categoryBadges.culture, desc: 'กิจกรรมบำเพ็ญสาธารณประโยชน์และนิทรรศการเฉลิมพระเกียรติ' },
+            { id: 602, month: 6, dateNum: '08', monthTh: 'มิ.ย.', fullDate: '8 มิถุนายน 2570', title: 'ประชุมเครือข่ายโลจิสติกส์ระเบียงเศรษฐกิจอินโดจีน', time: '09:00 - 16:00 น.', location: 'โรงแรมท็อปแลนด์ คอนเวนชั่น', department: 'ประชุม (Meeting)', category: 'การประชุม', icon: 'bi-truck', badgeImg: categoryBadges.meeting, desc: 'เชื่อมโยงการค้าและการขนส่งสี่แยกอินโดจีน' },
+            { id: 603, month: 6, dateNum: '14', monthTh: 'มิ.ย.', fullDate: '14 มิถุนายน 2570', title: 'งานแสดงสินค้าเฟอร์นิเจอร์และของตกแต่งบ้าน', time: '10:00 - 21:00 น.', location: 'ศูนย์แสดงสินค้าและประชุมนานาชาติพิษณุโลก', department: 'นิทรรศการ (Exhibition)', category: 'นิทรรศการ', icon: 'bi-house-heart', badgeImg: categoryBadges.expo, desc: 'รวมผู้ประกอบการเฟอร์นิเจอร์ไม้สักและงานดีไซน์ภาคเหนือ' },
+            { id: 604, month: 6, dateNum: '19', monthTh: 'มิ.ย.', fullDate: '19 มิถุนายน 2570', title: 'การประชุมวิชาการด้านวิศวกรรมและเทคโนโลยี', time: '08:30 - 17:00 น.', location: 'คณะวิศวกรรมศาสตร์ มหาวิทยาลัยนเรศวร', department: 'ประชุมวิชาการ (Convention)', category: 'วิชาการ', icon: 'bi-cpu', badgeImg: categoryBadges.tech, desc: 'การประชุมวิชาการระดับชาติและนานาชาติด้านวิศวกรรม' },
+            { id: 605, month: 6, dateNum: '24', monthTh: 'มิ.ย.', fullDate: '24 มิถุนายน 2570', title: 'สัมมนา Green MICE การจัดงานอย่างยั่งยืน', time: '13:00 - 16:30 น.', location: 'โรงแรมภัทธารา รีสอร์ท แอนด์ สปา', department: 'สัมมนา (Seminar)', category: 'สิ่งแวดล้อม', icon: 'bi-recycle', badgeImg: categoryBadges.convention, desc: 'แนวทางการลดคาร์บอนฟุตพริ้นท์ในการจัดประชุมและอีเวนต์' },
+            { id: 606, month: 6, dateNum: '28', monthTh: 'มิ.ย.', fullDate: '28 มิถุนายน 2570', title: 'Phitsanulok Fruit & Agro Fair เทศกาลผลไม้', time: '10:00 - 20:00 น.', location: 'ตลาดเกษตรกรจังหวัดพิษณุโลก', department: 'งานแสดงสินค้า (Exhibition)', category: 'อาหาร', icon: 'bi-shop', badgeImg: categoryBadges.expo, desc: 'จำหน่ายทุเรียนหลง-หลิน และผลไม้ตามฤดูกาลคุณภาพดี' },
+
+            // --- เดือน 7: กรกฎาคม 2570 (7 วัน) ---
+            { id: 701, month: 7, dateNum: '02', monthTh: 'ก.ค.', fullDate: '2 กรกฎาคม 2570', title: 'ประชุมเตรียมจัดงานประเพณีแข่งเรือยาวชิงถ้วยพระราชทาน', time: '09:30 - 12:00 น.', location: 'ศาลากลางจังหวัดพิษณุโลก', department: 'ประชุม (Meeting)', category: 'การประชุม', icon: 'bi-people', badgeImg: categoryBadges.meeting, desc: 'เตรียมความพร้อมการจัดงานประเพณีใหญ่ประจำปีของจังหวัด' },
+            { id: 702, month: 7, dateNum: '07', monthTh: 'ก.ค.', fullDate: '7 กรกฎาคม 2570', title: 'มหกรรมหนังสือและการเรียนรู้ภาคเหนือตอนล่าง', time: '10:00 - 20:00 น.', location: 'เซ็นทรัล พิษณุโลก', department: 'นิทรรศการ (Exhibition)', category: 'นิทรรศการ', icon: 'bi-book', badgeImg: categoryBadges.expo, desc: 'งานสัปดาห์หนังสือ พบปะนักเขียน และกิจกรรมส่งเสริมการอ่าน' },
+            { id: 703, month: 7, dateNum: '12', monthTh: 'ก.ค.', fullDate: '12 กรกฎาคม 2570', title: 'สัมมนาการตลาดดิจิทัลและ TikTok Commerce', time: '09:00 - 16:00 น.', location: 'โรงแรมเรือนแพ รอยัล ปาร์ค', department: 'สัมมนา (Seminar)', category: 'เทคโนโลยี', icon: 'bi-phone', badgeImg: categoryBadges.tech, desc: 'ปั้นผู้ประกอบการท้องถิ่นสู่การขายออนไลน์ระดับประเทศ' },
+            { id: 704, month: 7, dateNum: '17', monthTh: 'ก.ค.', fullDate: '17 กรกฎาคม 2570', title: 'งานแห่เทียนพรรษาและสมโภชพระพุทธชินราช', time: '08:00 - 21:00 น.', location: 'วัดพระศรีรัตนมหาธาตุวรมหาวิหาร', department: 'อีเวนต์พิเศษ (Special Event)', category: 'วัฒนธรรม', icon: 'bi-brightness-high', badgeImg: categoryBadges.culture, desc: 'ขบวนแห่เทียนพรรษาสุดวิจิตรและกิจกรรมส่งเสริมพระพุทธศาสนา' },
+            { id: 705, month: 7, dateNum: '21', monthTh: 'ก.ค.', fullDate: '21 กรกฎาคม 2570', title: 'การประชุมวิชาการทางการพยาบาลและสาธารณสุข', time: '08:30 - 16:30 น.', location: 'โรงแรมอมรินทร์ลากูน', department: 'ประชุมวิชาการ (Convention)', category: 'วิชาการ', icon: 'bi-hospital', badgeImg: categoryBadges.convention, desc: 'ประชุมวิชาการประจำปีเครือข่ายพยาบาลภาคเหนือ' },
+            { id: 706, month: 7, dateNum: '25', monthTh: 'ก.ค.', fullDate: '25 กรกฎาคม 2570', title: 'Green Season Incentive เที่ยวหน้าฝนยลธรรมชาติ', time: '08:00 - 17:00 น.', location: 'น้ำตกแก่งโสภา - ทุ่งแสลงหลวง', department: 'อินเซนทิฟ (Incentive)', category: 'ท่องเที่ยว', icon: 'bi-tree', badgeImg: categoryBadges.incentive, desc: 'แพ็กเกจท่องเที่ยวเชิงนิเวศสำหรับองค์กรช่วงฤดูฝน' },
+            { id: 707, month: 7, dateNum: '30', monthTh: 'ก.ค.', fullDate: '30 กรกฎาคม 2570', title: 'Phitsanulok Street Food & Music Festival', time: '16:00 - 22:00 น.', location: 'สวนชมน่านเฉลิมพระเกียรติ', department: 'งานแสดงสินค้า (Exhibition)', category: 'อาหาร', icon: 'bi-music-note', badgeImg: categoryBadges.festival, desc: 'รวมร้านเด็ดสตรีทฟู้ดเมืองสองแควพร้อมดนตรีสด' },
+
+            // --- เดือน 8: สิงหาคม 2570 (7 วัน) ---
+            { id: 801, month: 8, dateNum: '04', monthTh: 'ส.ค.', fullDate: '4 สิงหาคม 2570', title: 'เวทีเจรจาธุรกิจอัญมณีและหัตถศิลป์ภาคเหนือ', time: '10:00 - 17:00 น.', location: 'โรงแรมท็อปแลนด์ คอนเวนชั่น', department: 'ประชุม (Meeting)', category: 'ธุรกิจ', icon: 'bi-gem', badgeImg: categoryBadges.meeting, desc: 'เชื่อมโยงผู้ผลิตงานหัตถศิลป์และเครื่องประดับกับคู่ค้า' },
+            { id: 802, month: 8, dateNum: '08', monthTh: 'ส.ค.', fullDate: '8 สิงหาคม 2570', title: 'Phitsanulok Team Building Retreat', time: '08:00 - 18:00 น.', location: 'ล่องแก่งลำน้ำเข็ก อำเภอวังทอง', department: 'อินเซนทิฟ (Incentive)', category: 'ท่องเที่ยว', icon: 'bi-compass', badgeImg: categoryBadges.incentive, desc: 'กิจกรรมสร้างความสัมพันธ์และส่งเสริมการท่องเที่ยวเชิงผจญภัย' },
+            { id: 803, month: 8, dateNum: '12', monthTh: 'ส.ค.', fullDate: '12 สิงหาคม 2570', title: 'มหกรรมผ้าไทยใส่ให้สนุก เฉลิมพระเกียรติวันแม่', time: '10:00 - 20:00 น.', location: 'เซ็นทรัล พิษณุโลก', department: 'นิทรรศการ (Exhibition)', category: 'วัฒนธรรม', icon: 'bi-heart', badgeImg: categoryBadges.culture, desc: 'เดินแบบผ้าไทยและออกร้านจำหน่ายผลิตภัณฑ์ศิลปาชีพ' },
+            { id: 804, month: 8, dateNum: '17', monthTh: 'ส.ค.', fullDate: '17 สิงหาคม 2570', title: 'งานสัปดาห์วิทยาศาสตร์แห่งชาติ ส่วนภูมิภาค', time: '08:30 - 16:30 น.', location: 'คณะวิทยาศาสตร์ มหาวิทยาลัยนเรศวร', department: 'นิทรรศการ (Exhibition)', category: 'วิชาการ', icon: 'bi-rocket', badgeImg: categoryBadges.tech, desc: 'นิทรรศการวิทยาศาสตร์ เทคโนโลยี และนวัตกรรมสำหรับเยาวชน' },
+            { id: 805, month: 8, dateNum: '21', monthTh: 'ส.ค.', fullDate: '21 สิงหาคม 2570', title: 'สัมมนาทิศทางเศรษฐกิจและการลงทุนปี 2571', time: '13:00 - 16:30 น.', location: 'โรงแรมภัทธารา รีสอร์ท แอนด์ สปา', department: 'สัมมนา (Seminar)', category: 'ธุรกิจ', icon: 'bi-graph-up', badgeImg: categoryBadges.convention, desc: 'วิเคราะห์แนวโน้มเศรษฐกิจระดับประเทศและภูมิภาค' },
+            { id: 806, month: 8, dateNum: '25', monthTh: 'ส.ค.', fullDate: '25 สิงหาคม 2570', title: 'การประชุมเครือข่ายองค์กรปกครองส่วนท้องถิ่น', time: '09:00 - 16:00 น.', location: 'หอประชุมศรีวชิรโชติ', department: 'ประชุมวิชาการ (Convention)', category: 'การประชุม', icon: 'bi-people', badgeImg: categoryBadges.meeting, desc: 'สัมมนาเพิ่มประสิทธิภาพการบริหารจัดการท้องถิ่น' },
+            { id: 807, month: 8, dateNum: '29', monthTh: 'ส.ค.', fullDate: '29 สิงหาคม 2570', title: 'Phitsanulok Half Marathon 2027', time: '04:30 - 09:30 น.', location: 'หน้าศาลากลางจังหวัดพิษณุโลก', department: 'อีเวนต์พิเศษ (Special Event)', category: 'กีฬา', icon: 'bi-trophy', badgeImg: categoryBadges.sport, desc: 'งานวิ่งมาราธอนมาตรฐานสากล ดึงดูดนักวิ่งทั่วประเทศ' },
+
+            // --- เดือน 9: กันยายน 2570 (7 วัน) ---
+            { id: 901, month: 9, dateNum: '04', monthTh: 'ก.ย.', fullDate: '4 กันยายน 2570', title: 'งานประเพณีแข่งเรือยาวชิงถ้วยพระราชทานฯ', time: '08:30 - 17:00 น.', location: 'ลำน้ำน่าน หน้าวัดพระศรีรัตนมหาธาตุฯ', department: 'อีเวนต์พิเศษ (Special Event)', category: 'วัฒนธรรม', icon: 'bi-water', badgeImg: categoryBadges.festival, desc: 'การแข่งขันเรือยาวประเพณีอันยิ่งใหญ่และขบวนเรือพยุหยาตราจำลอง' },
+            { id: 902, month: 9, dateNum: '09', monthTh: 'ก.ย.', fullDate: '9 กันยายน 2570', title: 'Phitsanulok Digital & Smart City Expo', time: '10:00 - 19:00 น.', location: 'ศูนย์แสดงสินค้าและประชุมนานาชาติพิษณุโลก', department: 'นิทรรศการ (Exhibition)', category: 'เทคโนโลยี', icon: 'bi-cpu', badgeImg: categoryBadges.tech, desc: 'จัดแสดงนวัตกรรมเมืองอัจฉริยะและโซลูชันดิจิทัล' },
+            { id: 903, month: 9, dateNum: '14', monthTh: 'ก.ย.', fullDate: '14 กันยายน 2570', title: 'ประชุมสรุปผลการดำเนินงาน MICE City ประจำปี', time: '09:00 - 15:00 น.', location: 'ศาลากลางจังหวัดพิษณุโลก', department: 'ประชุม (Meeting)', category: 'การประชุม', icon: 'bi-clipboard-check', badgeImg: categoryBadges.meeting, desc: 'ประเมินผลสำเร็จและวางแผนงานปีงบประมาณถัดไป' },
+            { id: 904, month: 9, dateNum: '18', monthTh: 'ก.ย.', fullDate: '18 กันยายน 2570', title: 'สัมมนาพัฒนาบุคลากรด้านการบริการและไมซ์', time: '09:00 - 16:00 น.', location: 'มหาวิทยาลัยราชภัฏพิบูลสงคราม', department: 'สัมมนา (Seminar)', category: 'อบรม', icon: 'bi-person-badge', badgeImg: categoryBadges.convention, desc: 'ยกระดับทักษะการบริการสู่มาตรฐานสากลสำหรับนักศึกษาและผู้ประกอบการ' },
+            { id: 905, month: 9, dateNum: '22', monthTh: 'ก.ย.', fullDate: '22 กันยายน 2570', title: 'งานประชุมวิชาการนานาชาติ มหาวิทยาลัยนเรศวร', time: '08:30 - 17:00 น.', location: 'อาคารเอกาทศรถ มหาวิทยาลัยนเรศวร', department: 'ประชุมวิชาการ (Convention)', category: 'วิชาการ', icon: 'bi-journal-text', badgeImg: categoryBadges.convention, desc: 'การประชุมวิชาการระดับนานาชาติด้านวิทยาศาสตร์สุขภาพและการแพทย์' },
+            { id: 906, month: 9, dateNum: '26', monthTh: 'ก.ย.', fullDate: '26 กันยายน 2570', title: 'มหกรรมสินค้าชุมชนและของดี 9 อำเภอ', time: '10:00 - 20:00 น.', location: 'ลานหน้าศาลากลางจังหวัดพิษณุโลก', department: 'งานแสดงสินค้า (Exhibition)', category: 'เศรษฐกิจ', icon: 'bi-shop', badgeImg: categoryBadges.expo, desc: 'รวมสุดยอดผลิตภัณฑ์เด่นจากทั้ง 9 อำเภอของจังหวัดพิษณุโลก' },
+            { id: 907, month: 9, dateNum: '30', monthTh: 'ก.ย.', fullDate: '30 กันยายน 2570', title: 'งานเลี้ยงขอบคุณเครือข่ายพันธมิตร MICE พิษณุโลก', time: '18:00 - 22:00 น.', location: 'โรงแรมเรือนแพ รอยัล ปาร์ค', department: 'อีเวนต์พิเศษ (Special Event)', category: 'งานเลี้ยง', icon: 'bi-stars', badgeImg: categoryBadges.festival, desc: 'สานสัมพันธ์เครือข่ายผู้จัดงานและผู้ประกอบการไมซ์' },
+
+            // --- เดือน 10: ตุลาคม 2570 (6 วัน) ---
+            { id: 1001, month: 10, dateNum: '05', monthTh: 'ต.ค.', fullDate: '5 ตุลาคม 2570', title: 'ประชุมเปิดแผนกระตุ้นการท่องเที่ยวไฮซีซั่น', time: '09:30 - 12:00 น.', location: 'โรงแรมท็อปแลนด์ คอนเวนชั่น', department: 'ประชุม (Meeting)', category: 'การประชุม', icon: 'bi-people', badgeImg: categoryBadges.meeting, desc: 'เตรียมแคมเปญต้อนรับนักท่องเที่ยวช่วงปลายปี' },
+            { id: 1002, month: 10, dateNum: '10', monthTh: 'ต.ค.', fullDate: '10 ตุลาคม 2570', title: 'งานแสดงสินค้าสุขภาพและความงาม (Wellness Expo)', time: '10:00 - 20:00 น.', location: 'เซ็นทรัล พิษณุโลก', department: 'นิทรรศการ (Exhibition)', category: 'นิทรรศการ', icon: 'bi-heart-pulse', badgeImg: categoryBadges.expo, desc: 'มหกรรมสมุนไพร สปา และการท่องเที่ยวเชิงสุขภาพ' },
+            { id: 1003, month: 10, dateNum: '15', monthTh: 'ต.ค.', fullDate: '15 ตุลาคม 2570', title: 'สัมมนาการบริหารจัดการธุรกิจโรงแรมยุคดิจิทัล', time: '13:00 - 16:30 น.', location: 'โรงแรมอมรินทร์ลากูน', department: 'สัมมนา (Seminar)', category: 'ธุรกิจ', icon: 'bi-laptop', badgeImg: categoryBadges.tech, desc: 'การใช้ระบบจองอัจฉริยะและการตลาดออนไลน์สำหรับโรงแรม' },
+            { id: 1004, month: 10, dateNum: '21', monthTh: 'ต.ค.', fullDate: '21 ตุลาคม 2570', title: 'งานประเพณีตักบาตรเทโวโรหณะ วัดพระศรีรัตนมหาธาตุฯ', time: '06:30 - 10:00 น.', location: 'วัดพระศรีรัตนมหาธาตุวรมหาวิหาร', department: 'อีเวนต์พิเศษ (Special Event)', category: 'วัฒนธรรม', icon: 'bi-brightness-high', badgeImg: categoryBadges.culture, desc: 'สืบสานประเพณีออกพรรษาอันดีงามของชาวพิษณุโลก' },
+            { id: 1005, month: 10, dateNum: '25', monthTh: 'ต.ค.', fullDate: '25 ตุลาคม 2570', title: 'ทริปสำรวจเส้นทางท่องเที่ยวเชิงเกษตรและธรรมชาติ', time: '08:00 - 17:00 น.', location: 'อำเภอชาติตระการ - น้ำตกชาติตระการ', department: 'อินเซนทิฟ (Incentive)', category: 'ท่องเที่ยว', icon: 'bi-compass', badgeImg: categoryBadges.incentive, desc: 'ส่งเสริมการท่องเที่ยวชุมชนและธรรมชาติสำหรับกลุ่มองค์กร' },
+            { id: 1006, month: 10, dateNum: '30', monthTh: 'ต.ค.', fullDate: '30 ตุลาคม 2570', title: 'Phitsanulok Halloween & Cosplay Night', time: '17:00 - 23:00 น.', location: 'ถนนคนเดินเมืองพิษณุโลก', department: 'อีเวนต์พิเศษ (Special Event)', category: 'บันเทิง', icon: 'bi-emoji-laughing', badgeImg: categoryBadges.festival, desc: 'กิจกรรมสีสันยามค่ำคืน ดึงดูดกลุ่มคนรุ่นใหม่และนักท่องเที่ยว' },
+
+            // --- เดือน 11: พฤศจิกายน 2570 (8 วัน) ---
+            { id: 1101, month: 11, dateNum: '04', monthTh: 'พ.ย.', fullDate: '4 พฤศจิกายน 2570', title: 'งานประชุมนานาชาติ Phitsanulok MICE City Summit', time: '09:00 - 16:00 น.', location: 'ศูนย์แสดงสินค้าและประชุมนานาชาติพิษณุโลก', department: 'ประชุม (Meeting)', category: 'การประชุม', icon: 'bi-people', badgeImg: categoryBadges.meeting, desc: 'ยกระดับเมืองพิษณุโลกสู่ศูนย์กลางการจัดประชุมและนิทรรศการระดับนานาชาติ' },
+            { id: 1102, month: 11, dateNum: '07', monthTh: 'พ.ย.', fullDate: '7 พฤศจิกายน 2570', title: 'เทศกาลลอยกระทงสองแคว แลอดีตเมืองพิษณุโลก', time: '16:00 - 23:00 น.', location: 'ริมแม่น้ำน่าน หน้าวัดใหญ่ - สวนชมน่าน', department: 'อีเวนต์พิเศษ (Special Event)', category: 'วัฒนธรรม', icon: 'bi-water', badgeImg: categoryBadges.festival, desc: 'ประกวดกระทงประดิษฐ์ นางนพมาศ และการแสดงแสงสีเสียงริมน้ำ' },
+            { id: 1103, month: 11, dateNum: '10', monthTh: 'พ.ย.', fullDate: '10 พฤศจิกายน 2570', title: 'มหกรรมอาหารและวัฒนธรรมลุ่มน้ำน่าน', time: '16:00 - 22:00 น.', location: 'ลานหน้าพระราชวังจันทน์', department: 'อีเวนต์พิเศษ (Special Event)', category: 'วัฒนธรรม', icon: 'bi-shop', badgeImg: categoryBadges.culture, desc: 'เทศกาลอาหารและของดีประจำจังหวัด ส่งเสริม Soft Power และเศรษฐกิจฐานราก' },
+            { id: 1104, month: 11, dateNum: '14', monthTh: 'พ.ย.', fullDate: '14 พฤศจิกายน 2570', title: 'งานแสดงสินค้านวัตกรรมอาหารและเครื่องดื่มภาคเหนือ', time: '10:00 - 20:00 น.', location: 'เซ็นทรัล พิษณุโลก', department: 'นิทรรศการ (Exhibition)', category: 'นิทรรศการ', icon: 'bi-display', badgeImg: categoryBadges.expo, desc: 'จัดแสดงนวัตกรรมการแปรรูปอาหารและเครื่องดื่มเพื่อการส่งออก' },
+            { id: 1105, month: 11, dateNum: '18', monthTh: 'พ.ย.', fullDate: '18 พฤศจิกายน 2570', title: 'งานเจรจาธุรกิจ StartUp ภาคเหนือ', time: '09:00 - 17:00 น.', location: 'โรงแรมท็อปแลนด์ คอนเวนชั่น เซ็นเตอร์', department: 'ประชุม (Meeting)', category: 'ธุรกิจ', icon: 'bi-briefcase', badgeImg: categoryBadges.tech, desc: 'เวทีจับคู่ธุรกิจระหว่างนักลงทุนและกลุ่มสตาร์ทอัพในภูมิภาคภาคเหนือ' },
+            { id: 1106, month: 11, dateNum: '22', monthTh: 'พ.ย.', fullDate: '22 พฤศจิกายน 2570', title: 'การประชุมวิชาการนานาชาติทางด้านการท่องเที่ยว', time: '08:30 - 16:30 น.', location: 'มหาวิทยาลัยนเรศวร', department: 'ประชุมวิชาการ (Convention)', category: 'วิชาการ', icon: 'bi-journal-text', badgeImg: categoryBadges.convention, desc: 'แลกเปลี่ยนองค์ความรู้การพัฒนาการท่องเที่ยวอย่างยั่งยืน' },
+            { id: 1107, month: 11, dateNum: '26', monthTh: 'พ.ย.', fullDate: '26 พฤศจิกายน 2570', title: 'ทริปสัมผัสลมหนาวและทะเลหมอกร่องกล้า', time: '07:00 - 18:00 น.', location: 'บ้านใหม่ร่องกล้า อำเภอนครไทย', department: 'อินเซนทิฟ (Incentive)', category: 'ท่องเที่ยว', icon: 'bi-compass', badgeImg: categoryBadges.incentive, desc: 'กิจกรรมท่องเที่ยวเชิงนิเวศต้อนรับฤดูหนาวสำหรับคณะผู้บริหาร' },
+            { id: 1108, month: 11, dateNum: '29', monthTh: 'พ.ย.', fullDate: '29 พฤศจิกายน 2570', title: 'Phitsanulok Jazz & Folk Music Festival', time: '17:00 - 23:00 น.', location: 'พระราชวังจันทน์', department: 'อีเวนต์พิเศษ (Special Event)', category: 'ดนตรี', icon: 'bi-music-note-beamed', badgeImg: categoryBadges.festival, desc: 'เทศกาลดนตรีแจ๊สและโฟล์คซองท่ามกลางบรรยากาศโบราณสถาน' },
+
+            // --- เดือน 12: ธันวาคม 2570 (8 วัน) ---
+            { id: 1201, month: 12, dateNum: '02', monthTh: 'ธ.ค.', fullDate: '2 ธันวาคม 2570', title: 'มหกรรมสินค้า OTOP Premium สู่สากล', time: '10:00 - 21:00 น.', location: 'เซ็นทรัล พิษณุโลก', department: 'งานแสดงสินค้า (Exhibition)', category: 'เศรษฐกิจ', icon: 'bi-bag', badgeImg: categoryBadges.expo, desc: 'งานแสดงและจำหน่ายสินค้า OTOP คัดเกรดพรีเมียม เพื่อยกระดับสู่ตลาดต่างประเทศ' },
+            { id: 1202, month: 12, dateNum: '05', monthTh: 'ธ.ค.', fullDate: '5 ธันวาคม 2570', title: 'กิจกรรมเดิน-วิ่ง เฉลิมพระเกียรติ และนิทรรศการ', time: '05:30 - 12:00 น.', location: 'มหาวิทยาลัยราชภัฏพิบูลสงคราม', department: 'อีเวนต์พิเศษ (Special Event)', category: 'กีฬา', icon: 'bi-bicycle', badgeImg: categoryBadges.sport, desc: 'กิจกรรมส่งเสริมสุขภาพและการท่องเที่ยวเชิงกีฬา' },
+            { id: 1203, month: 12, dateNum: '10', monthTh: 'ธ.ค.', fullDate: '10 ธันวาคม 2570', title: 'ประชุมวางแผนปฏิทิน MICE จังหวัดพิษณุโลก ปี 2571', time: '09:00 - 15:00 น.', location: 'ศาลากลางจังหวัดพิษณุโลก', department: 'ประชุม (Meeting)', category: 'การประชุม', icon: 'bi-people', badgeImg: categoryBadges.meeting, desc: 'รวบรวมกำหนดการจัดงานสำคัญของทุกหน่วยงานในปีถัดไป' },
+            { id: 1204, month: 12, dateNum: '14', monthTh: 'ธ.ค.', fullDate: '14 ธันวาคม 2570', title: 'เทศกาลบอลลูนนานาชาติ (Phitsanulok Balloon Fest)', time: '16:00 - 22:00 น.', location: 'กองบิน 46 พิษณุโลก', department: 'อีเวนต์พิเศษ (Special Event)', category: 'เทศกาล', icon: 'bi-balloon', badgeImg: categoryBadges.festival, desc: 'ชมบอลลูนแฟนซีหลากสีสัน พร้อมการแสดงดนตรีและโซนอาหาร' },
+            { id: 1205, month: 12, dateNum: '18', monthTh: 'ธ.ค.', fullDate: '18 ธันวาคม 2570', title: 'สัมมนาสรุปภาวะเศรษฐกิจและการลงทุนส่งท้ายปี', time: '13:00 - 16:30 น.', location: 'โรงแรมเรือนแพ รอยัล ปาร์ค', department: 'สัมมนา (Seminar)', category: 'ธุรกิจ', icon: 'bi-graph-up-arrow', badgeImg: categoryBadges.convention, desc: 'เสวนาทิศทางเศรษฐกิจภาคเหนือตอนล่างและโอกาสทางธุรกิจ' },
+            { id: 1206, month: 12, dateNum: '22', monthTh: 'ธ.ค.', fullDate: '22 ธันวาคม 2570', title: 'มหกรรมของขวัญปีใหม่และสินค้าวิสาหกิจชุมชน', time: '10:00 - 20:00 น.', location: 'ลานหน้าศาลากลางจังหวัดพิษณุโลก', department: 'นิทรรศการ (Exhibition)', category: 'เศรษฐกิจ', icon: 'bi-gift', badgeImg: categoryBadges.expo, desc: 'เลือกซื้อกระเช้าของขวัญปีใหม่จากผลิตภัณฑ์ชุมชนคุณภาพดี' },
+            { id: 1207, month: 12, dateNum: '25', monthTh: 'ธ.ค.', fullDate: '25 ธันวาคม 2570', title: 'เทศกาลส่งท้ายปี Phitsanulok Countdown 2028', time: '18:00 - 00:30 น.', location: 'สวนชมน่านเฉลิมพระเกียรติ', department: 'อีเวนต์พิเศษ (Special Event)', category: 'เฉลิมฉลอง', icon: 'bi-music-note', badgeImg: categoryBadges.festival, desc: 'งานเทศกาลดนตรีและเคานต์ดาวน์ส่งท้ายปีเก่าต้อนรับปีใหม่สุดยิ่งใหญ่' },
+            { id: 1208, month: 12, dateNum: '31', monthTh: 'ธ.ค.', fullDate: '31 ธันวาคม 2570', title: 'พิธีสวดมนต์ข้ามปี เสริมสิริมงคลรับปีใหม่ 2571', time: '21:00 - 00:30 น.', location: 'วัดพระศรีรัตนมหาธาตุวรมหาวิหาร', department: 'อีเวนต์พิเศษ (Special Event)', category: 'วัฒนธรรม', icon: 'bi-brightness-high', badgeImg: categoryBadges.culture, desc: 'ร่วมสวดมนต์ข้ามปี ณ พระวิหารหลวงพ่อพระพุทธชินราช' }
+        ];
+
+        // ชุดสี Gradient สำหรับการ์ด
+        const cardGradients = [
+            'from-green-500 to-emerald-700',
+            'from-amber-500 to-orange-600',
+            'from-red-500 to-rose-700',
+            'from-blue-500 to-indigo-700',
+            'from-purple-500 to-fuchsia-700',
+            'from-orange-400 to-red-500',
+            'from-pink-500 to-rose-600',
+            'from-teal-500 to-cyan-700'
+        ];
+
+        // เดือนที่เลือกปัจจุบัน (ค่าเริ่มต้น: เดือน 1 มกราคม)
+        let currentMonth = 1;
+
+        // สร้างปุ่มเลือก 12 เดือน
+        function renderMonthSelector() {
+            const container = document.getElementById('month-selector');
+            let html = '';
+
+            monthsList.forEach(m => {
+                const isActive = m.num === currentMonth;
+                const activeClass = isActive 
+                    ? 'bg-gradient-to-r from-brand-gold to-amber-400 text-brand-dark font-extrabold border-white shadow-[0_0_15px_rgba(230,189,112,0.8)] scale-105' 
+                    : 'bg-brand-dark/60 hover:bg-white/20 text-white/80 hover:text-white border-white/15 font-medium';
+
+                html += `
+                    <button onclick="selectMonth(${m.num})" 
+                            class="py-2 px-1 rounded-xl font-prompt text-xs md:text-sm border transition-all duration-200 cursor-pointer ${activeClass}">
+                        ${m.short}
+                    </button>
+                `;
+            });
+
+            container.innerHTML = html;
+        }
+
+        // เปลี่ยนเดือน
+        function selectMonth(monthNum) {
+            currentMonth = monthNum;
+            renderMonthSelector();
+            renderCalendar();
+        }
+
+        function prevMonth() {
+            currentMonth = currentMonth === 1 ? 12 : currentMonth - 1;
+            selectMonth(currentMonth);
+        }
+
+        function nextMonth() {
+            currentMonth = currentMonth === 12 ? 1 : currentMonth + 1;
+            selectMonth(currentMonth);
+        }
+
+        // แสดงการ์ดกิจกรรมของเดือนที่เลือก
+        function renderCalendar() {
+            const container = document.getElementById('event-grid');
+            const monthObj = monthsList.find(m => m.num === currentMonth);
+            
+            // อัปเดตชื่อเดือนหัวข้อใหญ่
+            document.getElementById('current-month-title').innerText = `${monthObj.full} 2570`;
+
+            // กรองเฉพาะกิจกรรมในเดือนที่เลือก และเรียงตามวันที่
+            const filteredEvents = eventsData
+                .filter(e => e.month === currentMonth)
+                .sort((a, b) => parseInt(a.dateNum) - parseInt(b.dateNum));
+
+            // อัปเดตป้ายจำนวนกิจกรรม
+            document.getElementById('event-count-badge').innerText = `${filteredEvents.length} กิจกรรม`;
+
+            let html = '';
+            filteredEvents.forEach((event, index) => {
+                const gradientClass = cardGradients[index % cardGradients.length];
+                
+                html += `
+                    <div onclick="openModal(${event.id})" 
+                         class="fade-in-up bg-white rounded-2xl overflow-hidden shadow-[0_10px_20px_rgba(0,0,0,0.6)] transform transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_15px_30px_rgba(230,189,112,0.5)] hover:ring-2 hover:ring-brand-gold cursor-pointer flex flex-col h-full border border-white/10 relative group"
+                         style="animation-delay: ${index * 0.08}s">
+                        
+                        <!-- รูปตกแต่งมุมขวาบนแบบเฉียงๆ (ของใครของมันตามประเภทกิจกรรม) -->
+                        <div class="absolute -top-2 -right-2 w-12 h-12 md:w-14 md:h-14 bg-white/95 rounded-2xl p-1.5 shadow-lg transform rotate-[15deg] group-hover:rotate-[25deg] group-hover:scale-110 transition-all duration-300 z-20 border border-brand-gold/50 flex items-center justify-center pointer-events-none">
+                            <img src="${event.badgeImg}" 
+                                 onerror="this.src='https://cdn-icons-png.flaticon.com/512/3281/3281289.png'"
+                                 alt="${event.category}" 
+                                 class="w-full h-full object-contain">
+                        </div>
+
+                        <!-- Top Half: พื้นขาว เลขใหญ่ -->
+                        <div class="pt-5 pb-3 px-2 flex flex-col items-center justify-center bg-white relative z-10">
+                            <div class="font-prompt font-black text-5xl md:text-6xl text-gray-900 leading-none tracking-tighter drop-shadow-sm">
+                                ${event.dateNum}
+                            </div>
+                            <div class="font-prompt font-bold text-xs md:text-sm text-brand-purple mt-1 uppercase tracking-wide">
+                                ${event.monthTh} 2570
+                            </div>
+                        </div>
+                        
+                        <!-- Bottom Half: Gradient พร้อมชื่อกิจกรรม เวลา และสถานที่ -->
+                        <div class="bg-gradient-to-b ${gradientClass} p-3 md:p-4 flex flex-col justify-between text-center flex-grow border-t-2 border-dashed border-white/40 relative overflow-hidden">
+                            <!-- ลายน้ำตกแต่งเบาๆ -->
+                            <i class="bi ${event.icon} absolute -bottom-4 -left-2 text-6xl text-white opacity-10 transform rotate-12 pointer-events-none"></i>
+                            
+                            <!-- ชื่อกิจกรรม -->
+                            <h3 class="font-prompt font-bold text-white text-[0.85rem] md:text-[0.95rem] leading-snug drop-shadow-md z-10 line-clamp-2 mb-2">
+                                ${event.title}
+                            </h3>
+                            
+                            <!-- แสดงเวลาและสถานที่จัดกิจกรรมบนการ์ด -->
+                            <div class="z-10 bg-black/25 backdrop-blur-sm rounded-xl p-2 text-left space-y-1 border border-white/15 mb-2">
+                                <div class="flex items-center gap-1.5 text-[0.7rem] md:text-xs text-white/95 font-sarabun">
+                                    <i class="bi bi-clock-fill text-brand-gold shrink-0"></i>
+                                    <span class="truncate">${event.time}</span>
+                                </div>
+                                <div class="flex items-start gap-1.5 text-[0.7rem] md:text-xs text-white/95 font-sarabun">
+                                    <i class="bi bi-geo-alt-fill text-brand-gold shrink-0 mt-0.5"></i>
+                                    <span class="line-clamp-1">${event.location}</span>
+                                </div>
+                            </div>
+
+                            <!-- ป้ายประเภทกิจกรรม -->
+                            <div class="text-[0.65rem] md:text-[0.7rem] bg-white/15 text-white px-2.5 py-0.5 rounded-full font-sarabun z-10 inline-flex items-center justify-center gap-1 self-center">
+                                <i class="bi ${event.icon} text-brand-gold"></i> ${event.category}
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+            container.innerHTML = html;
+        }
+
+        // ---------------------------------------------------------
+        // Modal Logic 
+        // ---------------------------------------------------------
+        const modal = document.getElementById('eventModal');
+        const modalContent = document.getElementById('modalContent');
+
+        function openModal(id) {
+            const event = eventsData.find(e => e.id === id);
+            if (!event) return;
+
+            document.getElementById('m-title').innerText = event.title;
+            document.getElementById('m-date').innerText = event.fullDate;
+            document.getElementById('m-time').innerText = event.time;
+            document.getElementById('m-location').innerText = event.location;
+            document.getElementById('m-department').innerText = event.department;
+            document.getElementById('m-desc').innerText = event.desc;
+            document.getElementById('m-badge-img').src = event.badgeImg;
+
+            modal.classList.remove('hidden');
+            setTimeout(() => {
+                modalContent.classList.remove('scale-95', 'opacity-0');
+                modalContent.classList.add('scale-100', 'opacity-100');
+            }, 10);
+        }
+
+        function closeModal() {
+            modalContent.classList.remove('scale-100', 'opacity-100');
+            modalContent.classList.add('scale-95', 'opacity-0');
+            
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 300);
+        }
+
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape' && !modal.classList.contains('hidden')) {
+                closeModal();
+            }
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            renderMonthSelector();
+            renderCalendar();
+        });
+    </script>
+</body>
+</html>
